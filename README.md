@@ -1,14 +1,15 @@
 # SSR-PortDown-Up
 To run Juniper SSR CLI up and down commands on specific SSR interface at a set interval of 30 minutes up and 30 minutes down as a service or until stopped by the user, you can create a systemd service using this procedure. You can also adjust the timing to your desire.
 
-1.Create a systemd service file:
+**1.Create a systemd service file:**
 
 Open a text editor with root privileges and create a file named interface_control.service in the /etc/systemd/system/ directory.
 
 sudo vi /etc/systemd/system/interface_control.service
 
 
-2. Add the following content to the interface_control.service file: (Ensure to replace "ge-0-2" with your actual interface name.)
+******2. Add the following content to the interface_control.service file: (Ensure to replace "ge-0-2" with your actual interface name.)
+******
 
 [Unit]
 Description=Interface control service
@@ -33,4 +34,3 @@ sudo systemctl start  interface_control.service
 
 Note: This will start the service that executes the specified CLI commands at an interval of 30 minutes until stopped manually by the user. Adjust the commands in the ExecStart directive of the service file as needed. (i.e sleep 1800)
 
-![image](https://github.com/stevevoto/SSR-PortDown-Up/assets/22358076/f09a8ec8-830b-4e08-bba7-bc85b3b36db6)
